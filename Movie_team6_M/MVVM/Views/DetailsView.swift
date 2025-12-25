@@ -3,7 +3,7 @@
 //  Movie_team6_M
 //
 //  Created by Hadeel Alansari on 24/12/2025.
-//aaa
+
 
 
 import SwiftUI
@@ -17,7 +17,7 @@ struct DetailsView: View {
                 ZStack(alignment: .topLeading) {
                     
                     //MARK: - Pic
-                    
+
                     Image("Image1")
                         .resizable()
                         .scaledToFill()
@@ -26,13 +26,13 @@ struct DetailsView: View {
                         .ignoresSafeArea(edges: .top)
                     
                     LinearGradient(
-                        colors: [.black.opacity(1),.white.opacity(0.2)],
+                        colors: [.black.opacity(1),.black.opacity(0)],
                         startPoint: .bottom,
                         endPoint: .top
                     )
                     .frame(width: 400, height: 444)
                     
-                    VStack(alignment: .leading, spacing: 30) {
+                    VStack(alignment: .leading, spacing: 45) {
                         
                         Spacer().frame(height: 120)
                         
@@ -112,11 +112,11 @@ struct DetailsView: View {
                                 }
                             }//h
                         }//v
-                            Spacer().frame(height: 12)
                             
                             Color.gray
                                 .frame(width: 358,height: 0.5)
-                            
+                        
+                            //MARK: - Rating  & Reviews
                             
                             VStack(alignment: .leading, spacing: 16){
                                 
@@ -134,10 +134,111 @@ struct DetailsView: View {
                                     .font(.system(size: 15))
                                     .fontWeight(.semibold)
                             }//v
-                 
                         
+                        //MARK: - ReviewCard
                         
-                    }
+                        ScrollView(.horizontal, showsIndicators: false){
+                            HStack{
+                                ZStack{
+                                    Color.gray.opacity(0.2)
+                                        .frame(width: 305,height: 188)
+                                    VStack(alignment: .leading,spacing: 12){
+                                        
+                                        HStack{
+                                            Color.white
+                                                .frame(width: 38,height: 38)
+                                                .cornerRadius(100)
+                                            
+                                            VStack(alignment: .leading, spacing: 8){
+                                                Text("name name")
+                                                    .foregroundStyle(.white)
+                                                    .font(.system(size: 13))
+                                                    .fontWeight(.medium)
+                                                
+                                                HStack{
+                                                    ForEach(0..<5) { _ in
+                                                        Image(systemName: "star.fill")
+                                                            .font(.system(size: 10))
+                                                            .foregroundStyle(Color.yellow)
+                                                    }
+                                                }//h
+                                            }//v
+                                        }//h
+                                        
+                                        Text("This is an engagingly simple, good-hearted film, with just enough darkness around the edges to give contrast and relief to its glowingly benign view of human nature.")
+                                            .frame(width: 250,height: 80)
+                                            .foregroundStyle(.white)
+                                            .font(.system(size: 13))
+                                        
+                                        Text("Day")
+                                            .foregroundStyle(.gray)
+                                            .font(.system(size: 10))
+                                            .fontWeight(.medium)
+                                            .padding(.leading,240)
+                                    }//vAll
+                                    .padding(.leading, -30)
+                                    
+                                }//z
+                                
+                                ZStack{
+                                    Color.gray.opacity(0.2)
+                                        .frame(width: 305,height: 188)
+                                    VStack(alignment: .leading,spacing: 12){
+                                        
+                                        HStack{
+                                            Color.white
+                                                .frame(width: 38,height: 38)
+                                                .cornerRadius(100)
+                                            
+                                            VStack(alignment: .leading, spacing: 8){
+                                                Text("name name")
+                                                    .foregroundStyle(.white)
+                                                    .font(.system(size: 13))
+                                                    .fontWeight(.medium)
+                                                
+                                                HStack{
+                                                    ForEach(0..<5) { _ in
+                                                        Image(systemName: "star.fill")
+                                                            .font(.system(size: 10))
+                                                            .foregroundStyle(Color.yellow)
+                                                    }
+                                                }//h
+                                            }//v
+                                        }//h
+                                        
+                                        Text("This is an engagingly simple, good-hearted film, with just enough darkness around the edges to give contrast and relief to its glowingly benign view of human nature.")
+                                            .frame(width: 250,height: 80)
+                                            .foregroundStyle(.white)
+                                            .font(.system(size: 13))
+                                        
+                                        Text("Day")
+                                            .foregroundStyle(.gray)
+                                            .font(.system(size: 10))
+                                            .fontWeight(.medium)
+                                            .padding(.leading,240)
+                                    }//vAll
+                                    .padding(.leading, -30)
+                                    
+                                }//z
+                            }//hCard
+                        }//scrollCard
+                        
+                        Button{}label: {
+                            ZStack{
+                                Color.yellow
+                                    .frame(width: 340,height: 44)
+                                    .cornerRadius(16)
+                                
+                                Text("Rating")
+                                    .foregroundStyle(.black)
+                                    .font(.system(size: 22))
+                                    //.fontWeight(.semibold)
+                            }
+                        }
+                        
+                        Spacer().frame(height: 120)
+                        
+                    }//vM
                     .padding(.leading, 16)
                     .padding(.top, 200)
                 }//z
@@ -199,6 +300,33 @@ struct MovieInfo: View {
         }
     }
 }
+
+struct StarsPic: View{
+    let name: String
+    let pic: Image
+    
+    var body: some View {
+        
+        
+        VStack(alignment: .leading, spacing: 16){
+            
+            pic
+                .resizable()
+                .frame(width: 76,height: 76)
+                .cornerRadius(100)
+            
+            
+            Text(name)
+                .foregroundColor(.gray)
+                .font(.system(size: 15))
+            
+//            StarsPic(name: "name name", pic: Image("Image1"))
+            
+        }
+        
+    }
+}
+
 
 #Preview {
     DetailsView()
