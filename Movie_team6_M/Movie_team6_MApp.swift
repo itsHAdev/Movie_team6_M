@@ -11,7 +11,7 @@ import SwiftUI
 struct Movie_team6_MApp: App {
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            HomeView()
         }
     }
 }

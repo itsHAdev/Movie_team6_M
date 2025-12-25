@@ -1,3 +1,11 @@
+//
+//  CategoryMoviesView.swift
+//  Movie_team6_M
+//
+//  Created by saja khalid on 04/07/1447 AH.
+//
+
+import SwiftUI
 struct CategoryMoviesView: View {
 
     let title: String
