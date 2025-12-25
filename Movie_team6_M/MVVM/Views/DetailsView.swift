@@ -33,7 +33,7 @@ struct DetailsView: View {
                 .frame(height: 444)
 
                 // MARK: - Content
-                VStack(alignment: .leading, spacing: 24) {
+                VStack(alignment: .leading, spacing: 30) {
 
                     Spacer().frame(height: 120)
 
@@ -106,6 +106,8 @@ struct DetailsView: View {
 
                     Divider().background(.gray)
 
+                    //MARK: - Reviews
+                    
                     VStack(alignment: .leading, spacing: 8) {
                         Text("Rating & Reviews")
                             .foregroundColor(.white)
@@ -118,15 +120,66 @@ struct DetailsView: View {
                         Text("out of 5")
                             .foregroundColor(.gray)
                     }
-
-                    Spacer(minLength: 40)
-                }
+                    
+                    //MARK: - ReviewCard
+                    
+                    ScrollView(.horizontal, showsIndicators: false){
+                        HStack{
+                          ZStack{
+                             Color.gray.opacity(0.2)
+                            .frame(width: 305,height: 188)
+                              
+                            VStack(alignment: .leading,spacing: 12){
+                                                               
+                                HStack{
+                                    Color.white
+                                    .frame(width: 38,height: 38)
+                                    .cornerRadius(100)
+                                                
+                            VStack(alignment: .leading, spacing: 8){
+                                    Text("name name")
+                                    .foregroundStyle(.white)
+                                    .font(.system(size: 13))
+                                    .fontWeight(.medium)
+                                                                       
+                            HStack{
+                                    ForEach(0..<5) { _ in
+                                    Image(systemName: "star.fill")
+                                    .font(.system(size: 10))
+                                    .foregroundStyle(Color.yellow)
+                    }
+                       }//h
+                            }//v
+                                }//h
+                                                               
+                         Text("This is an engagingly simple, good-hearted film, with just enough darkness around the edges to give contrast and relief to its glowingly benign view of human nature.")
+                                    .frame(width: 250,height: 80)
+                                    .foregroundStyle(.white)
+                                    .font(.system(size: 13))
+                                                               
+                        Text("Day")
+                            .foregroundStyle(.gray)
+                            .font(.system(size: 10))
+                            .fontWeight(.medium)
+                            .padding(.leading,240)
+                                
+                                }//v1
+                            .padding(.leading, -30)
+                                                           
+                                    }//z
+                                }//hCard
+                    }//scrollView
+                    
+                    Spacer().frame(height: 30)
+                }//v
                 .padding(.horizontal, 16)
                 .padding(.top, 200)
-            }
-        }
+            }//zMain
+        }//scrollView
         .ignoresSafeArea()
 
+        //MARK: - Toolbar
+        
         .toolbar {
             ToolbarItem(placement: .navigationBarLeading) {
                 Button {
@@ -196,6 +249,3 @@ struct StarsPic: View{
         
     }
 }
-
-
-
