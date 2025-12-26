@@ -170,6 +170,32 @@ struct DetailsView: View {
                                 }//hCard
                     }//scrollView
                     
+                    
+                    NavigationLink{
+                        ReviewView()
+                    }label: {
+                        ZStack{
+                            Rectangle()
+                                .frame(width: 357,height: 48)
+                                .foregroundStyle(Color.black)
+                                .cornerRadius(8)
+                                .overlay(
+                            RoundedRectangle(cornerRadius: 8)
+                                .stroke(Color.yellow, lineWidth: 1)
+                                        )
+                            
+                            HStack{
+                                Image(systemName: "square.and.pencil")
+                                    .foregroundStyle(.yellow)
+                                    .font(.system(size: 16))
+                                
+                                Text("Write a review")
+                                    .foregroundStyle(.yellow)
+                                    .font(.system(size: 16))
+                            }//h
+                        }//z
+                    }//b
+                    
                     Spacer().frame(height: 30)
                 }//v
                 .padding(.horizontal, 16)
@@ -249,3 +275,31 @@ struct StarsPic: View{
         
     }
 }
+
+struct ReviewCard: View {
+    let text: String
+    let rating: Int
+
+    var body: some View {
+        VStack(alignment: .leading, spacing: 12) {
+
+            // النجوم
+            HStack(spacing: 2) {
+                ForEach(1...5, id: \.self) { index in
+                    Image(systemName: index <= rating ? "star.fill" : "star")
+                        .foregroundStyle(.yellow)
+                        .font(.system(size: 16))
+                }
+            }
+
+            // نص الريفيو
+            Text(text)
+                .foregroundStyle(.white)
+                .font(.system(size: 15))
+        }
+        .padding()
+        .background(Color.gray.opacity(0.25))
+        .cornerRadius(12)
+    }
+}
+
